@@ -1,4 +1,5 @@
 use anyhow::Result;
+use serde_json::json;
 
 #[tokio::test]
 async fn quick_dev() -> Result<()> {
@@ -8,6 +9,17 @@ async fn quick_dev() -> Result<()> {
         .await?
         .print()
         .await?;
+
+    hc.do_post(
+        "/login",
+        json!({
+            "userName": "tiendang",
+            "userPassword": "password"
+        }),
+    )
+    .await?
+    .print()
+    .await?;
 
     Ok(())
 }

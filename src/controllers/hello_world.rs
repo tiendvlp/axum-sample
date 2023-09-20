@@ -38,7 +38,6 @@ impl HelloWorldController {
     }
 
     async fn get_hello_world(params: Query<HelloParams>) -> impl IntoResponse {
-        let paramss = params.deref();
         let name = match params.name {
             Some(ref na) => na,
             None => "",
